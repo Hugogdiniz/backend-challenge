@@ -1,4 +1,4 @@
-<img src="me.svg" width="200" alt="ME">
+<img src="https://newinstprod.me.com.br/images/mercado_eletronico_2-04-crop.png" width="200" alt="ME">
 
 # Back-end Challenge
 
