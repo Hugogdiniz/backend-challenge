@@ -12,7 +12,7 @@ public class PedidoController {
 
     @GetMapping
     public ResponseEntity<Pedido> findAll() {
-        Pedido p = new Pedido(1L);
+        Pedido p = new Pedido();
         return ResponseEntity.ok().body(p);
     }
 }

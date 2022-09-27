@@ -2,6 +2,7 @@ package br.me.desafio.backendchallenge.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Objects;
 
 
@@ -13,17 +14,20 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-
-    // private List<Item> itens;
+    @OneToMany
+    private List<Item> itens;
     // private StatusPedido status;
 
 
     public Pedido() {
     }
 
-    public Pedido(long id) {
+    public Pedido(long id, List<Item> itens) {
+
         this.id = id;
+        this.itens = itens;
     }
+
 
     public long getId() {
         return id;
