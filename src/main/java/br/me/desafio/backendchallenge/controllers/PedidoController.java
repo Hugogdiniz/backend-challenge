@@ -1,4 +1,4 @@
-package br.me.desafio.backendchallenge.Controllers;
+package br.me.desafio.backendchallenge.controllers;
 
 import br.me.desafio.backendchallenge.entities.Pedido;
 import org.springframework.http.ResponseEntity;
