@@ -1,11 +1,15 @@
 package br.me.desafio.backendchallenge.entities;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Objects;
 
 @Entity
-public class Item {
+@Table(name = "tb_item")
+public class Item implements Serializable {
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,11 +21,15 @@ public class Item {
     private BigDecimal precoUnitario;
     private Integer qtd;
 
+    @ManyToOne
+    @JoinColumn(name = "pedido_id")
+    private Pedido pedido;
+
     public Item() {
 
     }
 
-    public Item(Long id, String descricao, BigDecimal precoUnitario, Integer qtd) {
+    public Item(Long id, String descricao, BigDecimal precoUnitario, Integer qtd, Pedido pedido) {
         this.id = id;
         this.descricao = descricao;
         this.precoUnitario = precoUnitario;
@@ -60,16 +68,27 @@ public class Item {
         this.qtd = qtd;
     }
 
+    public Pedido getPedido() {
+        return pedido;
+    }
+
+    public void setPedido(Pedido pedido) {
+        this.pedido = pedido;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Item item = (Item) o;
-        return id.equals(item.id) && descricao.equals(item.descricao) && precoUnitario.equals(item.precoUnitario) && qtd.equals(item.qtd);
+        return Objects.equals(id, item.id) && Objects.equals(descricao, item.descricao) && Objects.equals(precoUnitario, item.precoUnitario) && Objects.equals(qtd, item.qtd) && Objects.equals(pedido, item.pedido);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, descricao, precoUnitario, qtd);
+        return Objects.hash(id, descricao, precoUnitario, qtd, pedido);
     }
 }
+
+
+
