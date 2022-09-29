@@ -1,5 +1,7 @@
 package br.me.desafio.backendchallenge.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.math.BigDecimal;
@@ -21,6 +23,7 @@ public class Item implements Serializable {
     private BigDecimal precoUnitario;
     private Integer qtd;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
