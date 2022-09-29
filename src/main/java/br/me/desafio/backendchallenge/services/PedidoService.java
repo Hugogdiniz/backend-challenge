@@ -25,4 +25,9 @@ public class PedidoService {
             return obj.get();
 
         }
+
+        public Pedido save(Pedido pedido) {
+            return repository.save(pedido);
+
+        }
 }

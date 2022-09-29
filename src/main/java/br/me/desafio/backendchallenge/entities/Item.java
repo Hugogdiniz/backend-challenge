@@ -37,6 +37,7 @@ public class Item implements Serializable {
         this.descricao = descricao;
         this.precoUnitario = precoUnitario;
         this.qtd = qtd;
+        this.pedido = pedido;
     }
 
     public Long getId() {
