@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Table;
 import java.util.List;
 
 @RestController
@@ -20,8 +19,6 @@ public class PedidoController {
     @GetMapping
     public ResponseEntity<List<Pedido>> findAll() {
         List<Pedido> list = service.findAll();
-        //Pedido p = new Pedido(1,null);
-        //return ResponseEntity.ok().body(p);
         return ResponseEntity.ok().body(list);
     }
 
@@ -37,5 +34,12 @@ public class PedidoController {
     public Pedido save(@RequestBody Pedido pedido) {
         return service.save(pedido);
 
+    }
+
+    @DeleteMapping(value = "/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public ResponseEntity<Void> delete(@PathVariable long id) {
+         service.delete(id);
+         return ResponseEntity.noContent().build();
     }
 }

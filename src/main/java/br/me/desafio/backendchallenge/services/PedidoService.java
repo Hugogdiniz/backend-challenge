@@ -23,22 +23,30 @@ public class PedidoService {
         this.repository = repository;
     }
 
+
+    public Pedido save(Pedido pedido) {
+        associaItensApedido(pedido);
+        return repository.save(pedido);
+
+    }
+
     public List<Pedido> findAll() {
-            return repository.findAll();
+        return repository.findAll();
 
-        }
+    }
 
-        public Pedido findById(long id) {
-            Optional<Pedido> obj = repository.findById(id);
-            return obj.get();
+    public Pedido findById(long id) {
+        Optional<Pedido> pedidoLocalizado = repository.findById(id);
+        return pedidoLocalizado.get();
 
-        }
+    }
 
-        public Pedido save(Pedido pedido) {
-            associaItensApedido(pedido);
-            return repository.save(pedido);
 
-        }
+    public void delete (long id) {
+        repository.deleteById(id);
+
+    }
+
 
 
 
