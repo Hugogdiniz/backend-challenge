@@ -8,6 +8,7 @@ import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -41,13 +42,27 @@ public class PedidoService {
 
     }
 
-
     public void delete (long id) {
         repository.deleteById(id);
 
     }
 
+    public Pedido update(Long id, Pedido pedido) {
+        Pedido entity = repository.getOne(id);
+        updateData(entity, pedido);
+        return repository.save(entity);
 
+    }
+
+    private void updateData(Pedido entity, Pedido pedido) {
+        entity.getItens().clear();
+        for (Item iten : pedido.getItens()) {
+            iten.setPedido(entity);
+        }
+
+        entity.getItens().addAll(pedido.getItens());
+
+    }
 
 
     private void associaItensApedido(Pedido pedido) {

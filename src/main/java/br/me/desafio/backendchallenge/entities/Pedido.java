@@ -15,7 +15,7 @@ public class Pedido implements Serializable {
     @Id
     @Column(name = "ID")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> itens = new ArrayList<>();
@@ -26,14 +26,14 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(long id, List<Item> itens) {
+    public Pedido(Long id, List<Item> itens) {
 
         this.id = id;
         this.itens = itens;
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

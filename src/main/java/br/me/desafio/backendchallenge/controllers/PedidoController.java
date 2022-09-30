@@ -38,8 +38,15 @@ public class PedidoController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> delete(@PathVariable long id) {
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
          service.delete(id);
          return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody Pedido pedido) {
+        pedido = service.update(id, pedido);
+        return ResponseEntity.ok().body(pedido);
+
     }
 }
