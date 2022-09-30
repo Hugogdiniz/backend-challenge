@@ -35,7 +35,6 @@ public class PedidoController {
     @PostMapping(value = "/create")
     @ResponseStatus(HttpStatus.CREATED)
     public Pedido save(@RequestBody Pedido pedido) {
-
         return service.save(pedido);
 
     }

@@ -17,8 +17,8 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @OneToMany(mappedBy = "pedido")
-    private List<Item> itens;
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Item> itens = new ArrayList<>();
 
     // private StatusPedido status;
 
@@ -45,6 +45,10 @@ public class Pedido implements Serializable {
         return itens;
     }
 
+    public void setItens(List<Item> itens) {
+        this.itens = itens;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -56,6 +60,12 @@ public class Pedido implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(id, itens);
+    }
+
+    public Pedido addItem(Item item) {
+        item.setPedido(this);
+        this.itens.add(item);
+        return this;
     }
 }
 
