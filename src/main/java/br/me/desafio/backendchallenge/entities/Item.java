@@ -14,6 +14,7 @@ public class Item implements Serializable {
 
     @Id
     @Column(name = "ID")
+    @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 

@@ -14,7 +14,6 @@ public class Pedido implements Serializable {
 
     @Id
     @Column(name = "ID")
-
     private Long id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
