@@ -4,9 +4,12 @@ package br.me.desafio.backendchallenge.services;
 import br.me.desafio.backendchallenge.entities.Item;
 import br.me.desafio.backendchallenge.entities.Pedido;
 import br.me.desafio.backendchallenge.repositories.PedidoRepository;
+import br.me.desafio.backendchallenge.services.exceptions.DatabaseException;
 import br.me.desafio.backendchallenge.services.exceptions.ResourceNotFoundException;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -45,7 +48,14 @@ public class PedidoService {
     }
 
     public void delete (long id) {
-        repository.deleteById(id);
+        try {
+            repository.deleteById(id);
+        } catch (EmptyResultDataAccessException e) {
+            throw new ResourceNotFoundException(id);
+        } catch (DataIntegrityViolationException e) {
+            throw new DatabaseException(e.getMessage());
+        }
+
 
     }
 
