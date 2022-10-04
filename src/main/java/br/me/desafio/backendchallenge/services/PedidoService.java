@@ -13,6 +13,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
 
+import javax.persistence.EntityNotFoundException;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
@@ -60,10 +61,15 @@ public class PedidoService {
     }
 
     public Pedido update(Long id, Pedido pedido) {
-        Pedido entity = repository.getOne(id);
-        updateData(entity, pedido);
-        return repository.save(entity);
+        try {
+            Pedido entity = repository.getOne(id);
+            updateData(entity, pedido);
+            return repository.save(entity);
+        } catch (EntityNotFoundException e) {
+            throw new ResourceNotFoundException(id);
+        }
 
+ 
     }
 
     private void updateData(Pedido entity, Pedido pedido) {
