@@ -4,9 +4,11 @@ package br.me.desafio.backendchallenge.services;
 import br.me.desafio.backendchallenge.entities.Item;
 import br.me.desafio.backendchallenge.entities.Pedido;
 import br.me.desafio.backendchallenge.repositories.PedidoRepository;
+import br.me.desafio.backendchallenge.services.exceptions.ResourceNotFoundException;
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -38,7 +40,7 @@ public class PedidoService {
 
     public Pedido findById(long id) {
         Optional<Pedido> pedidoLocalizado = repository.findById(id);
-        return pedidoLocalizado.get();
+        return pedidoLocalizado.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
