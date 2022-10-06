@@ -23,7 +23,7 @@ public class PedidoController {
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Pedido> findById(@PathVariable Long id) {
+    public ResponseEntity<Pedido> findById(@PathVariable String id) {
         Pedido pedidoEncontrado = service.findById(id);
         return ResponseEntity.ok().body(pedidoEncontrado);
 
@@ -38,13 +38,13 @@ public class PedidoController {
 
     @DeleteMapping(value = "/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public ResponseEntity<Void> delete(@PathVariable Long id) {
+    public ResponseEntity<Void> delete(@PathVariable String id) {
          service.delete(id);
          return ResponseEntity.noContent().build();
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<Pedido> update(@PathVariable Long id, @RequestBody Pedido pedido) {
+    public ResponseEntity<Pedido> update(@PathVariable String id, @RequestBody Pedido pedido) {
         pedido = service.update(id, pedido);
         return ResponseEntity.ok().body(pedido);
 

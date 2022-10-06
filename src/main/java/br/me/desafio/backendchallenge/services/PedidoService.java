@@ -35,13 +35,13 @@ public class PedidoService {
 
     }
 
-    public Pedido findById(long id) {
+    public Pedido findById(String id) {
         Optional<Pedido> pedidoLocalizado = repository.findById(id);
         return pedidoLocalizado.orElseThrow(() -> new ResourceNotFoundException(id));
 
     }
 
-    public void delete (long id) {
+    public void delete (String id) {
         try {
             repository.deleteById(id);
         } catch (EmptyResultDataAccessException e) {
@@ -53,7 +53,7 @@ public class PedidoService {
 
     }
 
-    public Pedido update(Long id, Pedido pedido) {
+    public Pedido update(String id, Pedido pedido) {
         try {
             Pedido entity = repository.getOne(id);
             updateData(entity, pedido);

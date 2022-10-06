@@ -11,7 +11,7 @@ import java.util.List;
 public class StatusResponseDTO implements Serializable {
 
     @JsonProperty("pedido")
-    private Long id;
+    private String id;
     private List<StatusPedido> status = new ArrayList<>() ;
 
 
@@ -19,17 +19,17 @@ public class StatusResponseDTO implements Serializable {
 
     }
 
-    public StatusResponseDTO(Long id, List<StatusPedido> status) {
+    public StatusResponseDTO(String id, List<StatusPedido> status) {
         this.id = id;
         this.status = status;
     }
 
-    public Long getPedido() {
+    public String getPedido() {
         return id;
     }
 
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

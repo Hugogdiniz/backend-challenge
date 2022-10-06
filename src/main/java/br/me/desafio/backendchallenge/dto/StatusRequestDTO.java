@@ -14,12 +14,12 @@ public class StatusRequestDTO implements Serializable {
     private BigDecimal valorAprovado;
 
     @JsonProperty("pedido")
-    private Long id;
+    private String id;
 
     public StatusRequestDTO(){
 
     }
-    public StatusRequestDTO(StatusPedido status, Integer itensAprovados, BigDecimal valorAprovado, Long id) {
+    public StatusRequestDTO(StatusPedido status, Integer itensAprovados, BigDecimal valorAprovado, String id) {
         this.status = status;
         this.itensAprovados = itensAprovados;
         this.valorAprovado = valorAprovado;
@@ -45,7 +45,7 @@ public class StatusRequestDTO implements Serializable {
         return valorAprovado;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
@@ -61,7 +61,7 @@ public class StatusRequestDTO implements Serializable {
         this.valorAprovado = valorAprovado;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 }

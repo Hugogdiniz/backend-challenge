@@ -11,14 +11,14 @@ import java.util.Objects;
 public class Status implements Serializable {
 
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private String id;
     private Integer itensAprovados;
     private BigDecimal valorAprovado;
     private Pedido pedido;
     private StatusPedido statusInformado;
     private List<StatusPedido> status;
 
-    public Status(Long id, Integer itensAprovados, BigDecimal valorAprovado, Pedido pedido, StatusPedido statusInformado, List<StatusPedido> status) {
+    public Status(String id, Integer itensAprovados, BigDecimal valorAprovado, Pedido pedido, StatusPedido statusInformado, List<StatusPedido> status) {
         this.id = id;
         this.itensAprovados = itensAprovados;
         this.valorAprovado = valorAprovado;
@@ -27,11 +27,11 @@ public class Status implements Serializable {
         this.status = status;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 

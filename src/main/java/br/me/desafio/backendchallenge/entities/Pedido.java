@@ -12,24 +12,24 @@ public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Column(name = "ID")
-    private Long id;
+    private String id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> itens = new ArrayList<>();
     public Pedido() {
 
     }
-    public Pedido(Long id, List<Item> itens) {
+    public Pedido(String id, List<Item> itens) {
 
         this.id = id;
         this.itens = itens;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
