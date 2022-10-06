@@ -1,7 +1,6 @@
 package br.me.desafio.backendchallenge.dto;
 
-import br.me.desafio.backendchallenge.entities.Pedido;
-import br.me.desafio.backendchallenge.entities.Status;
+
 import br.me.desafio.backendchallenge.enums.StatusPedido;
 import com.fasterxml.jackson.annotation.JsonProperty;
 

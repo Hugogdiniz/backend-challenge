@@ -26,9 +26,8 @@ public class PedidoService {
 
 
     public Pedido save(Pedido pedido) {
-        associaItensApedido(pedido);
-        return repository.save(pedido);
-
+            associaItensApedido(pedido);
+            return repository.save(pedido);
     }
 
     public List<Pedido> findAll() {

@@ -17,6 +17,8 @@ public class Item implements Serializable {
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(unique=true)
     private String descricao;
     private BigDecimal precoUnitario;
     private Integer qtd;
