@@ -18,9 +18,11 @@ public class Item implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(unique=true)
+    @Column(unique=true, nullable = false)
     private String descricao;
+    @Column(nullable = false)
     private BigDecimal precoUnitario;
+    @Column(nullable = false)
     private Integer qtd;
     @JsonIgnore
     @ManyToOne
