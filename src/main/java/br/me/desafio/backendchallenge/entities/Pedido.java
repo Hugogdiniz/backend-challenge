@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+
 @Entity
 @Table(name = "tb_pedido")
 public class Pedido implements Serializable {
@@ -54,10 +55,9 @@ public class Pedido implements Serializable {
         return Objects.hash(id, itens);
     }
 
-    public Pedido addItem(Item item) {
+    public void addItem(Item item) {
         item.setPedido(this);
         this.itens.add(item);
-        return this;
     }
 }
 

@@ -55,7 +55,7 @@ public class PedidoService {
 
     public Pedido update(String id, Pedido pedido) {
         try {
-            Pedido entity = repository.getOne(id);
+            Pedido entity = repository.getReferenceById(id);
             updateData(entity, pedido);
             return repository.save(entity);
         } catch (EntityNotFoundException e) {
@@ -81,20 +81,7 @@ public class PedidoService {
         }
         pedido.setItens(new ArrayList<>());
         for (Item item: itens) {
-            validaItem(item);
             pedido.addItem(item);
-        }
-    }
-
-    private void validaItem(Item item) {
-        if (item.getDescricao() == null || item.getDescricao().isEmpty() || item.getDescricao().isBlank()){
-            throw new ServiceException("Descrição de Item é inválida!");
-        }
-        if (item.getPrecoUnitario() == null) {
-            throw new ServiceException("Preço de Item é inválido!");
-        }
-        if (item.getQtd() == null || item.getQtd() < 0 ) {
-            throw new ServiceException("Quantidade de item é inválida!");
         }
     }
 }
