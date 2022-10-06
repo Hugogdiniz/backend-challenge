@@ -1,7 +1,6 @@
 package br.me.desafio.backendchallenge.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,19 +17,13 @@ public class Item implements Serializable {
     @JsonIgnore
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-//    private Pedido pedido;
-
     private String descricao;
     private BigDecimal precoUnitario;
-
     private Integer qtd;
-
     @JsonIgnore
     @ManyToOne
     @JoinColumn(name = "pedido_id")
     private Pedido pedido;
-
     public Item() {
 
     }

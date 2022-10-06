@@ -1,6 +1,5 @@
 package br.me.desafio.backendchallenge.entities;
 
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,26 +10,19 @@ import java.util.Objects;
 @Table(name = "tb_pedido")
 public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @Column(name = "ID")
     private Long id;
-
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Item> itens = new ArrayList<>();
-
-    // private StatusPedido status;
-
-
     public Pedido() {
-    }
 
+    }
     public Pedido(Long id, List<Item> itens) {
 
         this.id = id;
         this.itens = itens;
     }
-
 
     public Long getId() {
         return id;

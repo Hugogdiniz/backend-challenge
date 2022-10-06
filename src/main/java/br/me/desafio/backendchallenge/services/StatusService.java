@@ -4,10 +4,8 @@ import br.me.desafio.backendchallenge.dto.StatusRequestDTO;
 import br.me.desafio.backendchallenge.dto.StatusResponseDTO;
 import br.me.desafio.backendchallenge.entities.Item;
 import br.me.desafio.backendchallenge.entities.Pedido;
-import br.me.desafio.backendchallenge.entities.Status;
 import br.me.desafio.backendchallenge.enums.StatusPedido;
 import br.me.desafio.backendchallenge.repositories.PedidoRepository;
-import br.me.desafio.backendchallenge.services.exceptions.DatabaseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -22,9 +20,7 @@ public class StatusService implements Serializable {
 
     @Autowired
     private final PedidoRepository repository;
-
     public StatusService(PedidoRepository repository) {this.repository = repository; }
-
     public StatusResponseDTO create(StatusRequestDTO obj) {
 
         List<StatusPedido> temp = new ArrayList<>();
@@ -68,14 +64,9 @@ public class StatusService implements Serializable {
                 }
             }
 
-
-
-
-
         }
 
         StatusResponseDTO statusDTO = new StatusResponseDTO(obj.getId(),temp);
-
         return statusDTO;
     }
 }

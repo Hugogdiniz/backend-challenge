@@ -1,11 +1,8 @@
 package br.me.desafio.backendchallenge.entities;
 
-import br.me.desafio.backendchallenge.dto.StatusResponseDTO;
 import br.me.desafio.backendchallenge.enums.StatusPedido;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.List;

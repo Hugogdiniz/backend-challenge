@@ -1,6 +1,5 @@
 package br.me.desafio.backendchallenge.services;
 
-
 import br.me.desafio.backendchallenge.entities.Item;
 import br.me.desafio.backendchallenge.entities.Pedido;
 import br.me.desafio.backendchallenge.repositories.PedidoRepository;
@@ -11,18 +10,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
-import org.springframework.web.server.ResponseStatusException;
-
 import javax.persistence.EntityNotFoundException;
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
 @Service
 public class PedidoService {
-
-
     private final PedidoRepository repository;
 
     @Autowired
@@ -77,9 +71,7 @@ public class PedidoService {
         for (Item iten : pedido.getItens()) {
             iten.setPedido(entity);
         }
-
         entity.getItens().addAll(pedido.getItens());
-
     }
 
 
