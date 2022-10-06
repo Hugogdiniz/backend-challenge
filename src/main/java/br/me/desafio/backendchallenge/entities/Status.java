@@ -1,5 +1,6 @@
 package br.me.desafio.backendchallenge.entities;
 
+import br.me.desafio.backendchallenge.dto.StatusResponseDTO;
 import br.me.desafio.backendchallenge.enums.StatusPedido;
 
 import javax.persistence.GeneratedValue;
@@ -11,7 +12,7 @@ import java.util.List;
 import java.util.Objects;
 
 public class Status implements Serializable {
-    @Id
+
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer itensAprovados;
