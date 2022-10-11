@@ -1,5 +1,7 @@
 package br.me.desafio.backendchallenge.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -12,7 +14,7 @@ import java.util.Objects;
 public class Pedido implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
-    @Column(name = "ID")
+    @JsonProperty("pedido")
     private String id;
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)

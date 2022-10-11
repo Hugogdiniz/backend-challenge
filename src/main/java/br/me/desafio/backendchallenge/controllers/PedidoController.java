@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/api/Pedido")
+@RequestMapping(value = "/api/pedido")
 public class PedidoController {
 
     @Autowired
@@ -29,7 +29,7 @@ public class PedidoController {
 
     }
 
-    @PostMapping(value = "/create")
+    @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Pedido save(@RequestBody Pedido pedido) {
         return service.save(pedido);

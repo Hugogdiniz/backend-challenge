@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(value = "/api/Status")
+@RequestMapping(value = "/api/status")
 public class StatusController {
 
     @Autowired
